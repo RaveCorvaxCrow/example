@@ -1,0 +1,29 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "*"
+pytest = "*"
+pytest-xdist = "*"
+selene = "==2.0.0b2"
+allure-pytest = "*"
+faker = "*"
+pyhamcrest = "*"
+web3 = "*"
+visual-regression-tracker = "*"
+webdriver-manager = "*"
+selenium = "*"
+pyjwt = "*"
+jwt = "*"
+clipboard = "*"
+chromedriver = "*"
+rel = "*"
+websocket-client = "==1.3.2"
+pyyaml = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

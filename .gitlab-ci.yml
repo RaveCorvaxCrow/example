@@ -1,0 +1,58 @@
+default:
+  tags:
+    - k8s
+
+stages:
+  - test
+  - allure-report
+  - allure-upload
+
+test:
+  stage: test
+  image: python:3.8
+  variables:
+    PIP_CACHE_DIR: '${CI_PROJECT_DIR}/.cache-pip'
+    VRT_CIBUILDID: '${CI_JOB_ID}'
+  script:
+    - pip install pipenv
+    - pipenv install
+    - pipenv run pip list
+    - pipenv run pytest -s -v tests/test_demo.py --alluredir=./allure-results --selenoid $MOON_URL --vrt $VRT_APIURL --project $VRT_PROJECT --apiKey $VRT_APIKEY --ciBuildId $VRT_CIBUILDID --branchName $VRT_BRANCHNAME --enableSoftAssert $VRT_ENABLESOFTASSERT
+  cache:
+    key:
+      files:
+        - requirements.txt
+    paths:
+      - .cache-pip
+  artifacts:
+    paths:
+      - allure-results
+    expire_in: 30 days
+
+allure_report:
+  stage: allure-report
+  image: frankescobar/allure-docker-service:2.17.2
+  variables:
+    REPORT_DIRECTORY: ${CI_PROJECT_DIR}/allure-report
+  dependencies:
+    - test
+  script:
+    - mkdir ./allure-report
+    - allure generate ./allure-results
+  artifacts:
+    paths:
+      - allure-report
+    expire_in: 30 days
+
+allure_upload:
+  stage: allure-upload
+  image: amazon/aws-cli
+  dependencies:
+    - allure_report
+  variables:
+    AWS_ACCESS_KEY_ID: '${ALLURE_AWS_ACCESS_KEY_ID}'
+    AWS_REGION: '${ALLURE_AWS_REGION}'
+    AWS_SECRET_ACCESS_KEY: '${ALLURE_AWS_SECRET_ACCESS_KEY}'
+  script:
+    - aws s3 cp ./allure-report s3://${ALLURE_S3_BUCKET}/${CI_PROJECT_PATH_SLUG}/${CI_JOB_ID} --recursive
+    - echo https://allure.allmeinfra.xyz/${CI_PROJECT_PATH_SLUG}/${CI_JOB_ID}/index.html

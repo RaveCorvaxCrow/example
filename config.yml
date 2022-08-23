@@ -1,0 +1,62 @@
+URI:
+  base_uri: https://api.test-1.drago.pet/api-service/v1
+  eth:
+    ws: ws://ethnode-test-1:8546
+  polygon:
+    ws: ws://polygon-test-1:8545/ws
+
+WALLETS:
+
+  DEPLOY:
+    WALLET_ID: 0x9575eB2a7804c43F68dC7998EB0f250832DF9f10
+    PRIVATE_KEY: 0x2d7bdb58c65480ac5aee00b20d3558fb18a916810d298ed97174cc01bb809cdd
+  CFO:
+    WALLET_ID: 0x9575eB2a7804c43F68dC7998EB0f250832DF9f10
+    PRIVATE_KEY: 0x2d7bdb58c65480ac5aee00b20d3558fb18a916810d298ed97174cc01bb809cdd
+  CEO:
+    WALLET_ID: 0x6E387779Ed9d4578943556e4D58bF37a8DCEfA88
+    PRIVATE_KEY: 0xf4bb8c9f5a48e2890d02e65acc10bf7ab03c96d7b32cf7c06c00473119aeb18e
+  COO:
+    WALLET_ID: 0x6E387779Ed9d4578943556e4D58bF37a8DCEfA88
+    PRIVATE_KEY: 0xf4bb8c9f5a48e2890d02e65acc10bf7ab03c96d7b32cf7c06c00473119aeb18e
+
+  BASIC_WALLETS:
+    - WALLET_ID: 0x6e70b906e921ef3812975455a2879861bfeac04f
+      PRIVATE_KEY: 69a61e63d80c90f87e3439fb6e900967940a48195eedcdac90cd4908b0dffdd2
+    - WALLET_ID: 0x37baa50b63f66013dc8c57934c2e3528e88d7748
+      PRIVATE_KEY: bc97f04b9baa0c58e2e112428b1071841dc9cbc1ae8f61bb4a2a44fb2e861406
+    - WALLET_ID: 0xe279fcfe559a6abd5c957f9ca48e68c802819ab3
+      PRIVATE_KEY: f8c11b6f9fa63bd1f651b0019342fca0c0f391e59ff43edafddde26833720ad1
+    - WALLET_ID: 0x7970ce6f6cff02580afd979709a669866e778ac5
+      PRIVATE_KEY: 249fd3e33e514b90afcd73f36ae19f37614ba8e88739fa74e7b8695873ecbc37
+    - WALLET_ID: 0x2bf59Fcb6A3b83AD445A864764c9938a7F850983
+      PRIVATE_KEY: be1000880f9a6a329deaf99c63e4267ef34f2e28348cf2413c1f00eeac6fc119
+    - WALLET_ID: 0xF2b5F58EbA179517EABAfE545e2565a065c19bbB
+      PRIVATE_KEY: 11862a83b3066cd2dc6bfc4821ef978f376742e2c10b71af454c510f7470e13d
+    - WALLET_ID: 0xc5C92E038DB1c94C9021921076DB66003d32415b
+      PRIVATE_KEY: 0627357cccbdc32384e06098bddd6684099b11dda3c306e3f1508803f40ef23c
+    - WALLET_ID: 0x853B5aeD3254aa65babe6fD61CdF39E36653d927
+      PRIVATE_KEY: 7923c3472dad82c0b0982ccbd89e2cbc2def18b21fceaa960e40d278d2fe5015
+    - WALLET_ID: 0x89E637dFf174d8Ba82B09a50b9F912a9D21b1cA3
+      PRIVATE_KEY:  d9ea90299cba5dcaf92231c1877b975fda6d3608f6f0dd95cc5de23b8d2b8e7a
+
+
+TEST_NETWORKS:
+  eth:
+    name: CDLocalTest1Eth
+    url_address_rpc: http://ethnode-test-1:8545/
+    chain_id: 666666
+    currency_symbol: ETH
+    url_address_block:
+  polygon:
+    name: CDLocalTest1Matic
+    url_address_rpc: http://polygon-test-1:8545/
+    chain_id: 100
+    currency_symbol: MATIC
+    url_address_block:
+  polygon_mumbai:
+    name: CDPolygonMumbai
+    url_address_rpc: https://matic-mumbai.chainstacklabs.com
+    chain_id: 80001
+    currency_symbol: MATIC
+    url_address_block: https://mumbai.polygonscan.com/

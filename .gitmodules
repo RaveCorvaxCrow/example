@@ -1,0 +1,4 @@
+[submodule "framework-qa-backend"]
+	path = framework-qa-backend
+	url = https://gitlab.allabout.me/dragons/framework-qa-backend
+	branch = blockchain
